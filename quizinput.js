@@ -29,6 +29,9 @@ getAnswers(data) {
   return answerList;
 }
 
+handleAppend(event) {
+  this.setState({value: ''});
+}
 handleChange(event) {
   if (this.validateInput(event)) {
     this.props.onQuestionChange(this.getQuestion(event.target.value), this.getAnswers(event.target.value));

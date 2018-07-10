@@ -15,20 +15,59 @@ class Container extends React.Component {
     super(props);
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.handleQuestionAppend = this.handleQuestionAppend.bind(this);
-
-    this.state = {question: "No question provided yet.", answers: []};
+    this.state = {
+      index: 0,
+      question: ["No question has been provided yet!"],
+       answers: [[]]
+     };
   }
 
   handleQuestionAppend() {
-    console.log("New question");
+    this.setState(
+      {
+       index: this.state.index + 1,
+       question: this.appendQuestions(this.state.question[this.state.index]),
+       answers: [this.appendAnswers(this.state.answers[this.state.index])]
+     });
   }
+
+  updateCurrentQuestion(newQuestion) {
+    var newList = this.state.question;
+    newList[this.state.index] = newQuestion;
+    return newList;
+  }
+
+  appendQuestions(newQuestion) {
+    var newList = this.state.question;
+    newList.push(newQuestion);
+    return newList;
+  }
+
+  appendAnswers(newAnswer) {
+    var newList = this.state.answers;
+    newList.push(newAnswer);
+    return newList;
+  }
+
   handleQuestionChange(newQuestion, newAnswers) {
-    this.setState({question: newQuestion, answers: newAnswers});
+    this.setState({question: this.updateCurrentQuestion(newQuestion), answers: newAnswers});
+  }
+
+  getQuestion() {
+    var questionList = []
+    console.log(this.state.answers);
+
+    for (var i = 0; i < this.state.question.length; i++) {
+      questionList.push(<QuizCarousel question={this.state.question[i]} answers={this.state.answers} />);
+    }
+    return questionList;
   }
 
   render() {
-    const question = this.state.question;
     const answers = this.state.answers;
+
+
+    const questionCards = this.getQuestion();
     return (
       <div className="wrapper">
         <div className="header-wrapper">
@@ -56,7 +95,7 @@ class Container extends React.Component {
           <div className="rightBar bordered">
             <div className="QuestionBar">
               <h1 className="questions-header">Question Bank</h1>
-              <QuizCarousel question={question} answers={answers} />
+                {questionCards}
             </div>
           </div>
         </div>
