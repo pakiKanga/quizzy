@@ -1,0 +1,116 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+  background-color: #1F2041;
+}
+
+.input-field>label {
+  color: white;
+  padding-left: 5px;
+}
+
+.input-field>label:focus {
+  color:white;
+}
+
+/*Setting default colour as white */
+textarea {
+  color: white;
+}
+
+/*Forcing changed colour to white*/
+textarea.materialize-textarea:focus:not([readonly])+label {
+  color:white;
+}
+
+
+/*Removing underline*/
+textarea.materialize-textarea {
+  border-bottom: 0px;
+}
+
+
+.QuizBox {
+  background-color: #4B3F72;
+  width: 720px;
+  height: 500px;
+  order: 2;
+}
+
+.QuestionBar {
+
+  order: 3;
+  border: 2px;
+
+}
+.SubmitButton {
+  margin-top: 20px;
+  width: 720px;
+  order: 3;
+}
+
+.guide-div {
+  background-color: pink;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+
+  width: 98%;
+}
+
+.header-wrapper {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.leftBar {
+  flex: 1;
+  flex-direction: column;
+}
+.middleBar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.rightBar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.body-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  flex: 1;
+  color: #DB7C26;
+  text-align: center;
+}
+
+.questions-header {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 22px;
+  color: white;
+}
+
+
+.bordered {
+   border: solid .5em transparent;
+   box-sizing: border-box;
+   /** relative so that our ::before absolute block can position itself according to it's parent block **/
+   position: relative;
+}
